@@ -66,9 +66,9 @@ class ParticularTaskAPI(Resource):
     def put(self,num):
         try:
             task_to_edit = request.get_json()
-            newtask = task_to_edit['message']
+            newtask = task_to_edit['task']
             task = Task.query.filter_by(id=num).first()
-            task.message = newtask
+            task.task = newtask
             db.session.commit()
             return {"message": "task updated successfully"}
         except:
